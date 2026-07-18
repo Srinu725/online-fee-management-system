@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Login</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      background: linear-gradient(to right, #b0f2b6, #e2f9e1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-container {
+      margin-top: 80px;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      color: #28a745;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: 500;
+    }
+
+    .form-control:focus {
+      border-color: #28a745;
+      box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+      transform: scale(1.02);
+    }
+
+    .btn-outline-success {
+      border-color: #28a745;
+      color: #28a745;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .btn-outline-success:hover {
+      background-color: #28a745;
+      color: #fff;
+      transform: scale(1.02);
+    }
+
+    .alert {
+      font-size: 14px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="col-md-6 offset-md-3 login-container">
+      <h3 class="text-center">Student Login</h3>
+
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-danger">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input type="password" name="password" class="form-control" required>
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-success w-50">Login</button>
+          <a href="{% url 'navbar' %}" class="btn btn-success w-50">Back to Home</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

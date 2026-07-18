@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Make Payment</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      background: linear-gradient(to right, #b0f2b6, #e2f9e1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .payment-container {
+      margin-top: 60px;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    h3 {
+      color: #28a745;
+      font-weight: 600;
+    }
+    .btn-success, .btn-outline-success {
+      width: 100%;
+    }
+    .btn-outline-success:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="col-md-6 offset-md-3 payment-container">
+    <h3 class="text-center">Pay Fee</h3>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-info">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="amount" class="form-label">Enter Amount to Pay (₹):</label>
+        <input type="number" name="amount" id="amount" class="form-control" required>
+      </div>
+
+     
+      <div class="row mt-3">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-success">Pay Now</button>
+        </div>
+        <div class="col-md-6">
+          <a href="{% url 'navbar' %}" class="btn btn-success">Back to Home</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

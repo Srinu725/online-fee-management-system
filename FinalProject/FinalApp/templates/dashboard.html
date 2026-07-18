@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Accountant Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      background: #e2f9e1;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .dashboard-box {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    h2 {
+      color: #28a745;
+    }
+    .table thead {
+      background-color: #28a745;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container my-5">
+  <div class="dashboard-box text-center">
+    <h2>Accountant Dashboard</h2>
+    <div class="row mt-4">
+      <div class="col-md-4"><strong>Total Students:</strong> {{ total_students }}</div>
+      <div class="col-md-4"><strong>Collected Amount:</strong> ₹{{ total_collected }}</div>
+      <div class="col-md-4"><strong>Total Balance:</strong> ₹{{ total_balance }}</div>
+    </div>
+  </div>
+
+  <div class="dashboard-box">
+    
+    <h4 class="mb-3">Student Fee Details</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Amount Paid</th>
+            <th>Total Fee</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for student in students %}
+          <tr>
+            <td>{{ student.student_id }}</td>
+            <td>{{ student.student_user.username }}</td>
+            <td>{{ student.branch }}</td>
+            <td>₹{{ student.amount_paid }}</td>
+            <td>₹{{ student.total_fee }}</td>
+            <td>₹{{ student.balance }}</td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="6" class="text-center">No students found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

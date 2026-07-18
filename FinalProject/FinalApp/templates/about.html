@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us - Online Fee Management</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <style>
+    body {
+      background: linear-gradient(to right, #b0f2b6, #e2f9e1);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .about-section {
+      background: white;
+      padding: 60px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .section-title {
+      font-size: 36px;
+      font-weight: 700;
+      color: #28a745; /* Green */
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .about-text {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    .highlight {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-home {
+      background-color: #28a745;
+      color: white;
+      font-size: 18px;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 6px;
+      transition: 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-home:hover {
+      background-color: #1e7e34;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container my-5">
+    <div class="about-section">
+      <h2 class="section-title">About Us</h2>
+      <p class="about-text">
+        Welcome to the <span class="highlight">Online Fee Management System</span>! Our mission is to make the process of collecting and managing student fees seamless, transparent, and efficient for educational institutions and parents.
+      </p>
+      <p class="about-text">
+        We believe in leveraging technology to reduce manual work and provide real-time access to fee details, payment history, and pending balances. Our platform ensures secure transactions, user-friendly dashboards, and customizable features tailored to the needs of schools, colleges, and universities.
+      </p>
+      <p class="about-text">
+        Built with the latest web technologies like <span class="highlight">Django</span> and <span class="highlight">Bootstrap</span>, our system is scalable, responsive, and highly secure.
+      </p>
+      <p class="about-text">
+        Thank you for trusting us with your digital transformation journey in education finance.
+      </p>
+
+      <div class="back-btn">
+        <a href="{% url 'navbar' %}" class="btn-home">Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
